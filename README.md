@@ -1,1 +1,3 @@
 # AdoptMe
+
+ExampleTest.-
