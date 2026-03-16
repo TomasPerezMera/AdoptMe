@@ -1,122 +1,110 @@
 #!/bin/bash
+
 # Comandos Docker para AdoptMe
-# Este archivo es solo para referencia, no es ejecutable directamente
 
-# ============================================
+
 # BUILD DE LA IMAGEN
-# ============================================
-
-# Build local
+# Build local;
 docker build -t adoptme .
 
-# Build con tag de versión
-docker build -t adoptme:1.0.0 .
+# Build con tag de versión;
+docker build -t adoptme:2.0.0 .
 
-# ============================================
+
 # EJECUTAR CONTENEDOR
-# ============================================
-
-# Ejecutar con MongoDB local
+# Ejecutar con MongoDB local;
 docker run -d \
   --name adoptme-container \
   -p 8080:8080 \
   -e MONGODB_URI=mongodb://host.docker.internal:27017/adoptme \
   adoptme
 
-# Ejecutar con MongoDB Atlas
+# Ejecutar con MongoDB Atlas;
 docker run -d \
   --name adoptme-container \
   -p 8080:8080 \
   -e MONGODB_URI="mongodb+srv://usuario:password@cluster.mongodb.net/adoptme" \
   adoptme
 
-# Ejecutar en modo interactivo (para debugging)
+# Ejecutar en modo interactivo para debugging;
 docker run -it \
   -p 8080:8080 \
   -e MONGODB_URI=mongodb://host.docker.internal:27017/adoptme \
   adoptme sh
 
-# ============================================
-# GESTIÓN DE CONTENEDORES
-# ============================================
 
-# Ver logs
+# GESTIÓN DE CONTENEDORES
+
+# Ver logs;
 docker logs adoptme-container
 
-# Ver logs en tiempo real
+# Ver logs en tiempo real;
 docker logs -f adoptme-container
 
-# Detener contenedor
+# Detener contenedor;
 docker stop adoptme-container
 
-# Iniciar contenedor detenido
+# Iniciar contenedor detenido;
 docker start adoptme-container
 
-# Eliminar contenedor
+# Eliminar contenedor;
 docker rm adoptme-container
 
-# Eliminar contenedor forzado (si está corriendo)
+# Eliminar contenedor forzado;
 docker rm -f adoptme-container
 
-# ============================================
-# DOCKERHUB
-# ============================================
 
-# Login a DockerHub
+# DOCKERHUB
+
+# Login a DockerHub;
 docker login
 
-# Tag para DockerHub (REEMPLAZAR <TU_USUARIO>)
-docker tag adoptme <TU_USUARIO>/adoptme:latest
-docker tag adoptme <TU_USUARIO>/adoptme:1.0.0
+# Tag para DockerHub;
+docker tag adoptme <USUARIO>/adoptme:latest
+docker tag adoptme <USUARIO>/adoptme:2.0.0
 
-# Push a DockerHub
-docker push <TU_USUARIO>/adoptme:latest
-docker push <TU_USUARIO>/adoptme:1.0.0
+# Push a DockerHub;
+docker push <USUARIO>/adoptme:latest
+docker push <USUARIO>/adoptme:2.0.0
 
-# Pull desde DockerHub
-docker pull <TU_USUARIO>/adoptme:latest
+# Pull desde DockerHub;
+docker pull <USUARIO>/adoptme:latest
 
-# ============================================
+
 # LIMPIEZA
-# ============================================
-
-# Eliminar imagen local
+# Eliminar imagen local;
 docker rmi adoptme
 
-# Eliminar imágenes sin usar
+# Eliminar imágenes no utilizadas;
 docker image prune
 
-# Eliminar todo (contenedores, imágenes, volúmenes)
+# Eliminar todo (contenedores, imágenes, volúmenes);
 docker system prune -a
 
-# ============================================
-# DEBUGGING
-# ============================================
 
-# Ver imágenes
+# DEBUGGING
+# Ver imágenes;
 docker images
 
-# Ver contenedores corriendo
+# Ver contenedores corriendo;
 docker ps
 
-# Ver todos los contenedores (incluidos detenidos)
+# Ver todos los contenedores (incluidos detenidos);
 docker ps -a
 
-# Inspeccionar contenedor
+# Inspeccionar contenedor;
 docker inspect adoptme-container
 
-# Ver uso de recursos
+# Ver uso de recursos;
 docker stats adoptme-container
 
-# Ejecutar comando dentro del contenedor
+# Ejecutar comando dentro del contenedor;
 docker exec -it adoptme-container sh
 
-# ============================================
-# HEALTH CHECK
-# ============================================
 
-# Verificar que el servidor responde
+# HEALTH CHECK
+# Verificar que el servidor responde;
 curl http://localhost:8080/health
 
-# Ver logs de arranque
+# Ver logs de arranque;
 docker logs adoptme-container | grep "Server listening"

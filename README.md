@@ -32,16 +32,16 @@ AdoptMe es una aplicación backend que permite:
 
 La imagen está disponible en DockerHub:
 
-docker pull <TU_USUARIO_DOCKERHUB>/adoptme:latest
+docker pull <USUARIO_DOCKERHUB>/adoptme:latest
 
 ### Build de la imagen
 
 ```bash
 docker build -t adoptme .
 
-docker tag adoptme <TU_USUARIO_DOCKERHUB>/adoptme:latest
+docker tag adoptme <USUARIO_DOCKERHUB>/adoptme:latest
 
-docker push <TU_USUARIO_DOCKERHUB>/adoptme:latest
+docker push <USUARIO_DOCKERHUB>/adoptme:latest
 ```
 
 ## API Endpoints
