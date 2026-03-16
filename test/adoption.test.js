@@ -15,7 +15,7 @@ describe('Adoptions Router Tests', function() {
     // Conectamos a BBDD de test previo a comenzar;
     before(async function() {
         if (mongoose.connection.readyState === 0) {
-            await mongoose.connect('mongodb://localhost:27017/adoptme_test');
+            await mongoose.connect(process.env.MONGO_URI);
         }
     });
 

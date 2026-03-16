@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 import bcrypt from 'bcrypt';
 
-// Pre-hashear la contraseña "coder123" una sola vez para optimización
+// Pre-hasheamos la contraseña "coder123" una sola vez para optimnpm list @faker-js/fakerización;
 const HASHED_PASSWORD = await bcrypt.hash("coder123", 10);
 
 /**

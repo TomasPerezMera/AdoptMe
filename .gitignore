@@ -1,4 +1,4 @@
 node_modules
-/test
 .env
-new_files
+*.log
+errors.log
