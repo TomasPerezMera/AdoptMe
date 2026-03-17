@@ -65,3 +65,14 @@ app.listen(PORT, () => {
     logger.info(`Entorno: ${process.env.NODE_ENV || 'Desarrollo'}`);
     logger.info(`Nivel de Logger: ${process.env.NODE_ENV === 'production' ? 'info+' : 'debug+'}`);
 });
+
+
+/* Endpoint con información general del proyecto */
+app.get('/', (req, res) => {
+    res.send({
+        project: 'AdoptMe API',
+        version: '2.0.0',
+        endpoints: ['/api/users', '/api/pets', '/api/adoptions', '/api/sessions', '/api/mocks'],
+        docs: '/health'
+    });
+});

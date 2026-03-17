@@ -108,10 +108,12 @@ Los tests cubren todos los endpoints del router de adoptions (11 tests).
 
 ## Screenshots - Tests Exitosos
 
-Adoption Tests pasando con éxito:
+### Adoption Tests pasando con éxito:
+
 ![npm tests exitosos](/src/public/adoptme-tests/passing-tests.jpg)
 
-Endpoints Testados con Postman:
+### Endpoints Testados con Postman:
+
 ![health-check](/src/public/adoptme-tests/1-health-check.jpg)
 ![mocking-pets](/src/public/adoptme-tests/2-mocking-pets.jpg)
 ![mocking-users](/src/public/adoptme-tests/3-mocking-users.jpg)
