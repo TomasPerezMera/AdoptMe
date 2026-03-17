@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { expect } from 'chai';
 import supertest from 'supertest';
 import mongoose from 'mongoose';
@@ -14,9 +15,11 @@ describe('Adoptions Router Tests', function() {
 
     // Conectamos a BBDD de test previo a comenzar;
     before(async function() {
-        if (mongoose.connection.readyState === 0) {
-            await mongoose.connect(process.env.MONGO_URI);
+        this.timeout(10000);
+        if (mongoose.connection.readyState !== 0) {
+            await mongoose.connection.close();
         }
+        await mongoose.connect(process.env.MONGO_URI);
     });
 
     // Limpiamos datos después de todos los tests.
@@ -111,7 +114,7 @@ describe('Adoptions Router Tests', function() {
         it('Debería devolver error con ID inválido (formato incorrecto)', async () => {
             const response = await requester.get('/api/adoptions/invalid-id-format');
             // Puede ser 404 o 500, dependiendo de validación.
-            expect(response.status).to.be.oneOf([404, 500]);
+            expect(response.status).to.equal(400);
             expect(response.body).to.have.property('status').that.equals('error');
         });
     });
@@ -179,7 +182,7 @@ describe('Adoptions Router Tests', function() {
         it('Debería devolver error con IDs inválidos (formato incorrecto)', async () => {
             const response = await requester
                 .post('/api/adoptions/invalid-uid/invalid-pid');
-            expect(response.status).to.be.oneOf([404, 500]);
+            expect(response.status).to.equal(400);
             expect(response.body).to.have.property('status').that.equals('error');
         });
         it('Debería actualizar el array de pets del usuario después de adoptar', async function() {
