@@ -90,14 +90,32 @@ docker push <USUARIO_DOCKERHUB>/adoptme:latest
 
 ## Testing
 
-Ejecutar tests:
+### Ejecutar Tests
+
+**Prerequisito:** El servidor debe estar corriendo.
 
 ```bash
+Terminal 1: Iniciar servidor
+
+npm run dev
+
+Terminal 2: Ejecutar tests
+
 npm test
 ```
 
-Los tests cubren:
+Los tests cubren todos los endpoints del router de adoptions (11 tests).
 
-- Router de Adoptions (todos los endpoints)
-- Casos de éxito y error
-- Validaciones de negocio
+## Screenshots - Tests Exitosos
+
+Adoption Tests pasando con éxito:
+![npm tests exitosos](/src/public/adoptme-tests/passing-tests.jpg)
+
+Endpoints Testados con Postman:
+![health-check](/src/public/adoptme-tests/1-health-check.jpg)
+![mocking-pets](/src/public/adoptme-tests/2-mocking-pets.jpg)
+![mocking-users](/src/public/adoptme-tests/3-mocking-users.jpg)
+![generate-data](/src/public/adoptme-tests/4-generate-data.jpg)
+![verify-data-users](/src/public/adoptme-tests/5-verify-data-users.jpg)
+![verify-data-pets](/src/public/adoptme-tests/6-verify-data-pets.jpg)
+![logger-test](/src/public/adoptme-tests/7-logger-test.jpg)

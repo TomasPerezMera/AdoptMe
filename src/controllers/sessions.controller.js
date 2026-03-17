@@ -53,7 +53,7 @@ const login = async (req, res, next) => {
             throw ErrorFactory.invalidCredentials();
         }
         const userDto = UserDTO.getUserTokenFrom(user);
-        const token = jwt.sign(userDto, 'tokenSecretJWT', { expiresIn: "1h" });
+        const token = jwt.sign(userDto, process.env.JWT_SECRET || 'tokenSecretJWT', {expiresIn:"1h"});
         logger.info('User logged in', { email });
         res.cookie('coderCookie', token, { maxAge: 3600000 })
         .send({ status: "success", message: "Logged in" });
