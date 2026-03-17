@@ -32,7 +32,9 @@ AdoptMe es una aplicación backend que permite:
 
 La imagen está disponible en DockerHub:
 
-docker pull <USUARIO_DOCKERHUB>/adoptme:latest
+docker pull tomasperezmera/adoptme:latest
+
+Link: https://hub.docker.com/repository/docker/tomasperezmera/adoptme/
 
 ### Build de la imagen
 
