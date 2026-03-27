@@ -11,6 +11,8 @@ AdoptMe es una aplicación backend que permite:
 - Sistema de adopciones.
 - Generación de datos mock para testing.
 
+** NOTA: Al Dockerizar el proyecto, el análisis de seguridad de Docker Hub reporta vulnerabilidades en dependencias npm como multer y tar. Estas pertenecen a librerías de terceros, y no afectan directamente la lógica del proyecto en su contexto actual. Por lo tanto, opté por no actualizar debido a cambios incompatibles en las nuevas versiones de las librerías, priorizando la estabilidad del proyecto académico. **
+
 ## Tecnologías
 
 - **Runtime:** Node.js 18+
